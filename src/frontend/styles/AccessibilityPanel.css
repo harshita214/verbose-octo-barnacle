@@ -1,0 +1,255 @@
+.accessibility-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+/* Toggle Button */
+.accessibility-toggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%);
+  color: #000;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 255, 65, 0.3);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accessibility-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 255, 65, 0.5);
+}
+
+.accessibility-toggle:focus {
+  outline: 2px solid #00ff41;
+  outline-offset: 2px;
+}
+
+.accessibility-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Menu */
+.accessibility-menu {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 320px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 2px solid rgba(0, 255, 65, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 255, 65, 0.2);
+  animation: slide_up 0.3s ease-out;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+@keyframes slide_up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+}
+
+.menu-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #00ff41;
+  margin: 0;
+}
+
+.menu-close {
+  background: none;
+  border: none;
+  color: #00ff41;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.menu-close:hover {
+  color: #ffff00;
+}
+
+.menu-close:focus {
+  outline: 2px solid #00ff41;
+  outline-offset: 2px;
+}
+
+.menu-content {
+  padding: 1rem;
+}
+
+/* Setting Items */
+.setting-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+}
+
+.setting-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.setting-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.setting-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #00ff41;
+}
+
+.setting-checkbox:focus {
+  outline: 2px solid #00ff41;
+  outline-offset: 2px;
+}
+
+.setting-icon {
+  font-size: 1.2rem;
+}
+
+.setting-text {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #00ff41;
+}
+
+.setting-description {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0.5rem 0 0 0;
+  line-height: 1.4;
+}
+
+/* Info Boxes */
+.info-box {
+  background: rgba(0, 255, 65, 0.05);
+  border: 1px solid rgba(0, 255, 65, 0.2);
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.info-box:last-child {
+  margin-bottom: 0;
+}
+
+.info-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #00ff41;
+  margin: 0 0 0.5rem 0;
+}
+
+.info-text {
+  font-size: 0.85rem;
+  color: #b0b0b0;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.info-list {
+  font-size: 0.85rem;
+  color: #b0b0b0;
+  margin: 0;
+  padding-left: 1.5rem;
+  line-height: 1.6;
+}
+
+.info-list li {
+  margin-bottom: 0.5rem;
+}
+
+kbd {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  border-radius: 3px;
+  padding: 0.2rem 0.4rem;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #00ff41;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .accessibility-panel {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .accessibility-toggle {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+
+  .accessibility-menu {
+    width: 280px;
+    bottom: 60px;
+  }
+}
+
+/* Calm Mode Styles */
+.calm-mode {
+  --animation-duration: 0s;
+}
+
+.calm-mode * {
+  animation-duration: 0s !important;
+  transition-duration: 0s !important;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+  .accessibility-toggle {
+    border: 3px solid #000;
+  }
+
+  .accessibility-menu {
+    border-width: 3px;
+  }
+
+  .setting-checkbox {
+    border: 2px solid #00ff41;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .accessibility-menu {
+    animation: none;
+  }
+
+  .accessibility-toggle {
+    transition: none;
+  }
+}

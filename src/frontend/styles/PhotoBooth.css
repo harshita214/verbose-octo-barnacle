@@ -1,0 +1,341 @@
+/* Vintage Halloween Photo Booth Styling */
+
+.photo-booth-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.booth-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+/* Upload Square */
+.booth-upload-square {
+  width: 220px;
+  height: 220px;
+  border: 3px solid var(--dark-bg-primary);
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(68, 23, 82, 0.3), rgba(27, 24, 51, 0.5));
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), inset 0 0 8px rgba(242, 159, 88, 0.1);
+}
+
+.booth-upload-square:hover {
+  border-color: var(--dark-bg-secondary);
+  box-shadow: 0 4px 15px rgba(242, 159, 88, 0.25), inset 0 0 12px rgba(242, 159, 88, 0.1);
+}
+
+.booth-upload-square.drag-over {
+  border-color: var(--dark-bg-primary);
+  background: linear-gradient(135deg, rgba(242, 159, 88, 0.15), rgba(171, 68, 89, 0.15));
+}
+
+.file-input {
+  display: none;
+}
+
+/* Upload Prompt */
+.booth-upload-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.booth-upload-icon {
+  font-size: 2.4rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.booth-upload-text {
+  font-size: 0.75rem;
+  color: var(--dark-bg-primary);
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Preview */
+.booth-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.booth-preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.booth-change-btn {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--dark-bg-primary);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.booth-change-btn:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.08);
+}
+
+.sticker-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.sticker-loading .loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--dark-bg-primary);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Spirit Selection Buttons - 4 in a Row */
+.booth-spirit-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 0.5rem;
+}
+
+.booth-spirit-btn {
+  padding: 0.6rem 0.4rem;
+  border: 2px solid var(--dark-bg-primary);
+  border-radius: 6px;
+  background: rgba(68, 23, 82, 0.2);
+  color: var(--dark-bg-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.3px;
+}
+
+.booth-spirit-btn:hover:not(:disabled) {
+  border-color: var(--dark-bg-secondary);
+  background: rgba(242, 159, 88, 0.15);
+  box-shadow: 0 0 12px rgba(242, 159, 88, 0.25);
+  transform: translateY(-1px);
+}
+
+.booth-spirit-btn.selected {
+  border-color: var(--dark-bg-primary);
+  background: linear-gradient(135deg, rgba(242, 159, 88, 0.25), rgba(171, 68, 89, 0.15));
+  box-shadow: 0 0 15px rgba(242, 159, 88, 0.3);
+}
+
+.booth-spirit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.booth-spirit-emoji {
+  font-size: 1.6rem;
+  display: block;
+  line-height: 1;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.booth-spirit-name {
+  font-size: 0.6rem;
+  line-height: 1;
+}
+
+/* Error Message */
+.booth-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(171, 68, 89, 0.15);
+  border: 1px solid var(--dark-bg-secondary);
+  border-radius: 5px;
+  width: 100%;
+  max-width: 100%;
+  font-size: 0.7rem;
+}
+
+.booth-error-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.booth-error-text {
+  font-size: 0.7rem;
+  color: var(--dark-bg-secondary);
+  flex: 1;
+}
+
+/* Summon Button */
+.booth-summon-btn {
+  padding: 0.7rem 1.5rem;
+  border: 2px solid var(--dark-bg-primary);
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--dark-bg-primary), var(--dark-bg-secondary));
+  color: var(--light-accent-secondary);
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.6rem 1.2rem;
+}
+
+.booth-summon-btn:hover:not(:disabled) {
+  box-shadow: 0 0 18px rgba(242, 159, 88, 0.3);
+  transform: translateY(-1px);
+}
+
+.booth-summon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.booth-summon-btn .spinner {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .photo-booth-container {
+    padding: 0;
+  }
+
+  .booth-content {
+    gap: 0.7rem;
+  }
+
+  .booth-upload-square {
+    width: 200px;
+    height: 200px;
+  }
+
+  .booth-upload-icon {
+    font-size: 2rem;
+  }
+
+  .booth-spirit-buttons {
+    gap: 0.5rem;
+    padding: 0 0.4rem;
+  }
+
+  .booth-spirit-btn {
+    padding: 0.5rem 0.3rem;
+    font-size: 0.6rem;
+  }
+
+  .booth-spirit-emoji {
+    font-size: 1.2rem;
+  }
+
+  .booth-summon-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .booth-upload-square {
+    width: 180px;
+    height: 180px;
+  }
+
+  .booth-upload-icon {
+    font-size: 1.8rem;
+  }
+
+  .booth-spirit-buttons {
+    gap: 0.4rem;
+  }
+
+  .booth-spirit-btn {
+    padding: 0.4rem 0.2rem;
+    font-size: 0.55rem;
+  }
+
+  .booth-spirit-emoji {
+    font-size: 1rem;
+  }
+}

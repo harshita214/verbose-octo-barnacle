@@ -1,0 +1,263 @@
+.witchs-brew {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.cauldron-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cauldron {
+  width: 120px;
+  height: 100px;
+  background: linear-gradient(135deg, #2d1b4e, #1a1a1a);
+  border: 2px solid var(--color-neon-green);
+  border-radius: 0 0 20px 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.15), 0 0 15px rgba(0, 255, 65, 0.2);
+}
+
+.cauldron-liquid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(180deg, rgba(0, 255, 65, 0.3), rgba(0, 255, 65, 0.1));
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.3rem;
+  border-top: 1px solid rgba(0, 255, 65, 0.4);
+}
+
+.ingredient-bubble {
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 255, 65, 0.2);
+  border: 1px solid var(--color-neon-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  animation: bubble-rise 1s ease-in-out infinite;
+}
+
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+}
+
+.cauldron-label {
+  font-size: 0.7rem;
+  color: var(--color-neon-green);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.recipe-display {
+  padding: 0.8rem;
+  background: rgba(45, 27, 78, 0.3);
+  border: 1px solid var(--color-neon-green);
+  border-radius: 6px;
+}
+
+.recipe-label {
+  font-size: 0.7rem;
+  color: var(--color-neon-green);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.6rem;
+  font-weight: bold;
+}
+
+.recipe-ingredients {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.recipe-step {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem;
+  background: rgba(0, 255, 65, 0.05);
+  border-left: 2px solid var(--color-neon-green);
+  border-radius: 3px;
+  font-size: 0.7rem;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--color-neon-green);
+  color: var(--color-black);
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.step-emoji {
+  font-size: 1.2rem;
+}
+
+.step-name {
+  color: var(--color-ghostly-white);
+  font-weight: 500;
+  font-size: 0.7rem;
+}
+
+.ingredient-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.selection-label {
+  font-size: 0.7rem;
+  color: var(--color-neon-green);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.ingredient-button {
+  padding: 0.6rem;
+  background: linear-gradient(135deg, rgba(45, 27, 78, 0.6), rgba(26, 26, 26, 0.8));
+  border: 1px solid var(--color-neon-green);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  color: var(--color-ghostly-white);
+}
+
+.ingredient-emoji {
+  font-size: 1.4rem;
+}
+
+.ingredient-name {
+  font-size: 0.6rem;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.ingredient-button:hover:not(:disabled) {
+  background: rgba(0, 255, 65, 0.1);
+  box-shadow: 0 0 12px rgba(0, 255, 65, 0.4);
+  transform: scale(1.05);
+}
+
+.ingredient-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.ingredient-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.clear-button {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid var(--color-blood-red);
+  color: var(--color-blood-red);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+  align-self: center;
+}
+
+.clear-button:hover:not(:disabled) {
+  background: var(--color-blood-red);
+  color: var(--color-ghostly-white);
+  box-shadow: 0 0 12px rgba(139, 0, 0, 0.4);
+}
+
+.clear-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.game-result {
+  padding: 0.8rem;
+  border-radius: 6px;
+  text-align: center;
+  animation: result-appear 0.5s ease-in-out;
+}
+
+@keyframes result-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.game-result.won {
+  background: rgba(0, 255, 65, 0.08);
+  border: 1px solid var(--color-neon-green);
+}
+
+.game-result.lost {
+  background: rgba(139, 0, 0, 0.08);
+  border: 1px solid var(--color-blood-red);
+}
+
+.game-result h3 {
+  font-family: var(--font-spooky);
+  font-size: 1rem;
+  margin: 0 0 0.3rem 0;
+  color: var(--color-ghostly-white);
+}
+
+.game-result.won h3 {
+  color: var(--color-neon-green);
+  text-shadow: 0 0 8px var(--color-neon-green);
+}
+
+.game-result.lost h3 {
+  color: var(--color-blood-red);
+  text-shadow: 0 0 8px var(--color-blood-red);
+}
+
+.game-result p {
+  color: var(--color-ghostly-white);
+  margin: 0;
+  opacity: 0.8;
+  font-size: 0.75rem;
+}

@@ -1,0 +1,11 @@
+node_modules
+.git
+.gitignore
+README.md
+DEPLOYMENT_GUIDE.md
+TESTING_REPORT.md
+FINAL_TEST_REPORT.md
+*.md
+.env.local
+.env.*.local
+src

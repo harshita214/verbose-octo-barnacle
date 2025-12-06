@@ -1,0 +1,325 @@
+.possess-upload-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Upload Area */
+.glitch-upload-area {
+  border: 2px dashed var(--color-neon-green);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(0, 255, 65, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.glitch-upload-area:hover {
+  border-color: var(--color-blood-red);
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
+  background: rgba(139, 0, 0, 0.05);
+}
+
+.glitch-upload-area.drag-over {
+  border-color: var(--color-neon-green);
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+  background: rgba(0, 255, 65, 0.1);
+  transform: scale(1.02);
+}
+
+.file-input {
+  display: none;
+}
+
+/* Upload Prompt */
+.upload-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.upload-icon {
+  font-size: 3rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.upload-text {
+  font-size: 1.2rem;
+  color: var(--color-ghostly-white);
+  margin: 0;
+}
+
+.upload-hint {
+  font-size: 0.9rem;
+  color: var(--color-neon-green);
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* Preview */
+.preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  border: 2px solid var(--color-neon-green);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+  transition: all 0.3s ease;
+}
+
+.sticker-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.sticker-loading .loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(0, 255, 65, 0.3);
+  border-top-color: var(--color-neon-green);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.sticker-loading p {
+  color: var(--color-neon-green);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.change-image-btn {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid var(--color-neon-green);
+  color: var(--color-neon-green);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.change-image-btn:hover:not(:disabled) {
+  background: var(--color-neon-green);
+  color: var(--color-black);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+}
+
+.change-image-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Spirit Selection */
+.spirit-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.spirit-title {
+  font-family: var(--font-spooky);
+  font-size: 1.5rem;
+  color: var(--color-neon-green);
+  text-shadow: 0 0 10px var(--color-neon-green);
+  margin: 0;
+}
+
+.spirit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.spirit-button {
+  padding: 1rem;
+  background: rgba(45, 27, 78, 0.5);
+  border: 2px solid var(--color-deep-purple);
+  border-radius: 8px;
+  color: var(--color-ghostly-white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.spirit-button:hover:not(:disabled) {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 255, 65, 0.2);
+}
+
+.spirit-button.selected {
+  background: rgba(0, 255, 65, 0.1);
+  border-width: 3px;
+}
+
+.spirit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spirit-name {
+  font-family: var(--font-spooky);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.spirit-description {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* Error Message */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(139, 0, 0, 0.2);
+  border: 2px solid var(--color-blood-red);
+  border-radius: 4px;
+  color: var(--color-ghostly-white);
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.error-icon {
+  font-size: 1.2rem;
+}
+
+.error-text {
+  flex: 1;
+}
+
+/* Summon Button */
+.summon-button {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--color-blood-red), var(--color-deep-purple));
+  border: 2px solid var(--color-neon-green);
+  color: var(--color-ghostly-white);
+  font-size: 1.1rem;
+  font-family: var(--font-spooky);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.summon-button:hover:not(:disabled) {
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.5), 0 0 60px rgba(139, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.summon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--color-neon-green);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  font-size: 1.2rem;
+  color: var(--color-neon-green);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .possess-upload-container {
+    padding: 1rem;
+  }
+
+  .spirit-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .summon-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}

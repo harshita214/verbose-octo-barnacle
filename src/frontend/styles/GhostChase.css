@@ -1,0 +1,201 @@
+.ghost-chase {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.game-title {
+  font-family: var(--font-spooky);
+  font-size: 1rem;
+  color: var(--color-neon-green);
+  text-shadow: 0 0 8px var(--color-neon-green);
+  margin: 0;
+}
+
+.game-stats {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  background: rgba(0, 255, 65, 0.08);
+  border: 1px solid var(--color-neon-green);
+  border-radius: 3px;
+  font-size: 0.7rem;
+}
+
+.stat-label {
+  color: var(--color-neon-green);
+  font-weight: bold;
+  font-size: 0.65rem;
+}
+
+.stat-value {
+  color: var(--color-ghostly-white);
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.game-canvas {
+  border: 2px solid var(--color-neon-green);
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(45, 27, 78, 0.5), rgba(26, 26, 26, 0.8));
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.15);
+  cursor: crosshair;
+  max-width: 220px;
+  max-height: 220px;
+  margin: 0 auto;
+}
+
+.game-instructions {
+  text-align: center;
+  padding: 0.6rem;
+  background: rgba(45, 27, 78, 0.2);
+  border-left: 2px solid var(--color-neon-green);
+  border-radius: 3px;
+  font-size: 0.7rem;
+}
+
+.game-instructions p {
+  color: var(--color-ghostly-white);
+  margin: 0;
+  font-size: 0.7rem;
+}
+
+.game-result {
+  padding: 0.8rem;
+  border-radius: 6px;
+  text-align: center;
+  animation: result-appear 0.5s ease-in-out;
+}
+
+@keyframes result-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.game-result.won {
+  background: rgba(0, 255, 65, 0.08);
+  border: 1px solid var(--color-neon-green);
+}
+
+.game-result.lost {
+  background: rgba(139, 0, 0, 0.08);
+  border: 1px solid var(--color-blood-red);
+}
+
+.game-result h3 {
+  font-family: var(--font-spooky);
+  font-size: 1rem;
+  margin: 0 0 0.3rem 0;
+  color: var(--color-ghostly-white);
+}
+
+.game-result.won h3 {
+  color: var(--color-neon-green);
+  text-shadow: 0 0 8px var(--color-neon-green);
+}
+
+.game-result.lost h3 {
+  color: var(--color-blood-red);
+  text-shadow: 0 0 8px var(--color-blood-red);
+}
+
+.game-result p {
+  color: var(--color-ghostly-white);
+  margin: 0;
+  opacity: 0.8;
+  font-size: 0.75rem;
+}
+
+.difficulty-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.8rem;
+  background: rgba(45, 27, 78, 0.2);
+  border: 1px solid var(--color-neon-green);
+  border-radius: 6px;
+  align-items: center;
+}
+
+.difficulty-label {
+  font-size: 0.8rem;
+  color: var(--color-neon-green);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.difficulty-slider {
+  width: 100%;
+  max-width: 150px;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #4ECDC4, #FFD700, #FF6B6B);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.difficulty-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-neon-green);
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+}
+
+.difficulty-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-neon-green);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+}
+
+.start-button {
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, var(--color-neon-green), #00cc33);
+  color: var(--color-black);
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 255, 65, 0.3);
+}
+
+.start-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(0, 255, 65, 0.5);
+}
+
+.start-button:active {
+  transform: translateY(0);
+}

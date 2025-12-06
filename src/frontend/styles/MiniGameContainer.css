@@ -1,0 +1,344 @@
+.mini-game-container-wrapper {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0.8rem;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  animation: spectral_fade_in 0.6s ease-out;
+}
+
+@keyframes spectral_fade_in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mini-game-header {
+  text-align: center;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+  padding-bottom: 0.6rem;
+}
+
+.mini-game-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #00ff41;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.mini-game-subtitle {
+  font-size: 0.7rem;
+  color: #b0b0b0;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Loading State */
+.game-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  gap: 0.8rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.spinner-ring {
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(0, 255, 65, 0.2);
+  border-top: 3px solid #00ff41;
+  border-radius: 50%;
+  animation: spin_ring 1s linear infinite;
+}
+
+@keyframes spin_ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.game-loading p {
+  color: #00ff41;
+  font-size: 0.8rem;
+  margin: 0;
+  animation: pulse_text 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse_text {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Game Content */
+.game-content {
+  animation: spectral_fade_in 0.4s ease-out;
+}
+
+/* Completion State */
+.game-completion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  gap: 1rem;
+  border-radius: 6px;
+  animation: spectral_fade_in 0.5s ease-out;
+}
+
+.game-completion.success {
+  background: linear-gradient(135deg, rgba(0, 255, 65, 0.08) 0%, rgba(0, 200, 100, 0.03) 100%);
+  border: 1px solid rgba(0, 255, 65, 0.2);
+}
+
+.game-completion.failure {
+  background: linear-gradient(135deg, rgba(255, 0, 65, 0.08) 0%, rgba(200, 0, 100, 0.03) 100%);
+  border: 1px solid rgba(255, 0, 65, 0.2);
+}
+
+.completion-content {
+  text-align: center;
+}
+
+.completion-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.6rem;
+  animation: bounce_icon 0.6s ease-out;
+}
+
+@keyframes bounce_icon {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.completion-content h2 {
+  font-size: 1.2rem;
+  margin: 0 0 0.3rem 0;
+  color: #00ff41;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+.game-completion.failure .completion-content h2 {
+  color: #ff4444;
+  text-shadow: 0 0 8px rgba(255, 68, 68, 0.4);
+}
+
+.completion-content p {
+  font-size: 0.8rem;
+  color: #b0b0b0;
+  margin: 0;
+}
+
+/* Completion Actions */
+.completion-actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.retry-button,
+.continue-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.retry-button {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff4444 100%);
+  color: white;
+  box-shadow: 0 2px 10px rgba(255, 68, 68, 0.2);
+}
+
+.retry-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+}
+
+.retry-button:active {
+  transform: translateY(0);
+}
+
+.continue-button {
+  background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%);
+  color: #000;
+  box-shadow: 0 2px 10px rgba(0, 255, 65, 0.2);
+}
+
+.continue-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 255, 65, 0.3);
+}
+
+.continue-button:active {
+  transform: translateY(0);
+}
+
+/* Mini-game container styles (shared) */
+.mini-game-container {
+  width: 100%;
+  padding: 0.8rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  border: 1px solid rgba(0, 255, 65, 0.15);
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.15);
+}
+
+.game-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #00ff41;
+  margin: 0;
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.3);
+}
+
+.game-stats {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.stat-value {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #00ff41;
+}
+
+.game-instructions {
+  text-align: center;
+  color: #b0b0b0;
+  font-size: 0.75rem;
+  margin-top: 0.8rem;
+  padding: 0.6rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  border-left: 2px solid rgba(0, 255, 65, 0.2);
+}
+
+.game-instructions p {
+  margin: 0;
+}
+
+.game-result {
+  margin-top: 0.8rem;
+  padding: 0.8rem;
+  border-radius: 6px;
+  text-align: center;
+  animation: spectral_fade_in 0.4s ease-out;
+}
+
+.game-result.won {
+  background: linear-gradient(135deg, rgba(0, 255, 65, 0.1) 0%, rgba(0, 200, 100, 0.03) 100%);
+  border: 1px solid rgba(0, 255, 65, 0.25);
+}
+
+.game-result.lost {
+  background: linear-gradient(135deg, rgba(255, 0, 65, 0.1) 0%, rgba(200, 0, 100, 0.03) 100%);
+  border: 1px solid rgba(255, 0, 65, 0.25);
+}
+
+.game-result h3 {
+  font-size: 1rem;
+  margin: 0 0 0.3rem 0;
+  color: #00ff41;
+}
+
+.game-result.lost h3 {
+  color: #ff4444;
+}
+
+.game-result p {
+  margin: 0;
+  color: #b0b0b0;
+  font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .mini-game-container-wrapper {
+    padding: 0.6rem;
+  }
+
+  .mini-game-title {
+    font-size: 0.9rem;
+  }
+
+  .mini-game-subtitle {
+    font-size: 0.65rem;
+  }
+
+  .game-stats {
+    gap: 0.8rem;
+  }
+
+  .completion-actions {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .retry-button,
+  .continue-button {
+    flex: 1;
+    min-width: 70px;
+  }
+}

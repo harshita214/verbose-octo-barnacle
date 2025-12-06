@@ -1,0 +1,299 @@
+.possess-hud {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  min-height: 400px;
+}
+
+/* Spirit Display */
+.spirit-display {
+  text-align: center;
+  z-index: 10;
+}
+
+.spirit-title {
+  font-family: var(--font-spooky);
+  font-size: 1.5rem;
+  color: var(--color-neon-green);
+  text-shadow: 0 0 10px var(--color-neon-green);
+  margin: 0 0 0.5rem 0;
+  animation: pulse-text 1s ease-in-out infinite;
+}
+
+@keyframes pulse-text {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px var(--color-neon-green);
+  }
+  50% {
+    opacity: 0.7;
+    text-shadow: 0 0 20px var(--color-neon-green), 0 0 30px var(--color-blood-red);
+  }
+}
+
+.spirit-name {
+  font-family: var(--font-spooky);
+  font-size: 2.5rem;
+  color: var(--color-ghostly-white);
+  text-shadow: 0 0 20px var(--color-neon-green), 0 0 40px var(--color-blood-red);
+  margin: 0;
+  animation: spirit-glow 2s ease-in-out infinite;
+}
+
+@keyframes spirit-glow {
+  0%, 100% {
+    text-shadow: 0 0 20px var(--color-neon-green), 0 0 40px var(--color-blood-red);
+  }
+  50% {
+    text-shadow: 0 0 30px var(--color-neon-green), 0 0 60px var(--color-blood-red),
+      0 0 80px var(--color-deep-purple);
+  }
+}
+
+/* Possession Progress */
+.possession-progress {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 10;
+}
+
+.progress-label {
+  font-size: 0.9rem;
+  color: var(--color-neon-green);
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.progress-bar-container {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: rgba(0, 255, 65, 0.1);
+  border: 2px solid var(--color-neon-green);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+.progress-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-neon-green), var(--color-blood-red));
+  border-radius: 13px;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 20px var(--color-neon-green), inset 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.progress-bar-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: progress-shimmer 1.5s infinite;
+}
+
+@keyframes progress-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progress-percentage {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--color-neon-green);
+  font-weight: bold;
+  text-shadow: 0 0 10px var(--color-neon-green);
+}
+
+/* Possession Status */
+.possession-status {
+  text-align: center;
+  z-index: 10;
+  min-height: 2rem;
+}
+
+.status-text {
+  font-size: 1.1rem;
+  color: var(--color-ghostly-white);
+  margin: 0;
+  animation: status-fade 0.5s ease-in-out;
+}
+
+@keyframes status-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility Controls */
+.accessibility-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  z-index: 10;
+}
+
+.calm-mode-toggle {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid var(--color-neon-green);
+  color: var(--color-neon-green);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.calm-mode-toggle:hover {
+  background: var(--color-neon-green);
+  color: var(--color-black);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+}
+
+/* Spectral Particles */
+.spectral-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--color-neon-green);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--color-neon-green);
+  animation: float-particle 3s ease-in-out infinite;
+}
+
+@keyframes float-particle {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1);
+  }
+}
+
+/* Calm Mode */
+.possess-hud.calm-mode {
+  --glitch-intensity: 0.3;
+}
+
+.possess-hud.calm-mode .spirit-title {
+  animation: pulse-text-calm 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-text-calm {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.possess-hud.calm-mode .spirit-name {
+  animation: spirit-glow-calm 3s ease-in-out infinite;
+}
+
+@keyframes spirit-glow-calm {
+  0%, 100% {
+    text-shadow: 0 0 10px var(--color-neon-green);
+  }
+  50% {
+    text-shadow: 0 0 20px var(--color-neon-green);
+  }
+}
+
+.possess-hud.calm-mode .particle {
+  animation: float-particle-calm 4s ease-in-out infinite;
+}
+
+@keyframes float-particle-calm {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.5);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .possess-hud {
+    padding: 1rem;
+    gap: 1.5rem;
+    min-height: 300px;
+  }
+
+  .spirit-name {
+    font-size: 2rem;
+  }
+
+  .spirit-title {
+    font-size: 1.2rem;
+  }
+
+  .progress-bar-container {
+    height: 25px;
+  }
+
+  .progress-percentage {
+    font-size: 1rem;
+  }
+
+  .status-text {
+    font-size: 0.95rem;
+  }
+
+  .calm-mode-toggle {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+}

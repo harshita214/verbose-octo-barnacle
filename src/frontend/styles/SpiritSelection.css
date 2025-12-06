@@ -1,0 +1,283 @@
+.possess-spirit-selection {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.spirit-selection-title {
+  font-family: var(--font-spooky);
+  font-size: 2rem;
+  color: var(--color-neon-green);
+  text-shadow: 0 0 10px var(--color-neon-green), 0 0 20px var(--color-blood-red);
+  margin: 0;
+  text-align: center;
+}
+
+.spirit-selection-subtitle {
+  font-size: 1rem;
+  color: var(--color-ghostly-white);
+  text-align: center;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.spirit-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Spirit Card */
+.spirit-card {
+  position: relative;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(45, 27, 78, 0.6), rgba(26, 26, 26, 0.8));
+  border: 2px solid var(--color-deep-purple);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.spirit-card:hover:not(:disabled) {
+  transform: translateY(-8px);
+  border-color: var(--color-neon-green);
+  box-shadow: 0 10px 30px rgba(0, 255, 65, 0.2);
+  background: linear-gradient(135deg, rgba(45, 27, 78, 0.8), rgba(26, 26, 26, 0.9));
+}
+
+.spirit-card.selected {
+  background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(139, 0, 0, 0.1));
+  border-width: 3px;
+}
+
+.spirit-card:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Spirit Icon */
+.spirit-icon {
+  font-size: 3rem;
+  animation: float-spirit 3s ease-in-out infinite;
+}
+
+@keyframes float-spirit {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.spirit-card.selected .spirit-icon {
+  animation: float-spirit 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+/* Spirit Info */
+.spirit-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.spirit-name {
+  font-family: var(--font-spooky);
+  font-size: 1.3rem;
+  color: var(--color-ghostly-white);
+  margin: 0;
+  font-weight: bold;
+}
+
+.spirit-description {
+  font-size: 0.85rem;
+  color: var(--color-ghostly-white);
+  opacity: 0.7;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Spirit Stats */
+.spirit-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.stat-label {
+  color: var(--color-neon-green);
+  font-weight: bold;
+  min-width: 70px;
+}
+
+.stat-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(0, 255, 65, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--color-neon-green);
+}
+
+.stat-fill {
+  height: 100%;
+  background: var(--color-neon-green);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.stat-value {
+  color: var(--color-ghostly-white);
+  opacity: 0.8;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+}
+
+/* Selection Indicator */
+.selection-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: var(--color-neon-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse-indicator 0.6s ease-in-out infinite;
+}
+
+.checkmark {
+  color: var(--color-black);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+@keyframes pulse-indicator {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(0, 255, 65, 0);
+  }
+}
+
+/* Loading State */
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  font-size: 1.2rem;
+  color: var(--color-neon-green);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Error Message */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(139, 0, 0, 0.2);
+  border: 2px solid var(--color-blood-red);
+  border-radius: 8px;
+  color: var(--color-ghostly-white);
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.error-icon {
+  font-size: 1.2rem;
+}
+
+.error-text {
+  flex: 1;
+}
+
+/* No Spirits */
+.no-spirits {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-ghostly-white);
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .possess-spirit-selection {
+    padding: 1rem;
+  }
+
+  .spirit-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .spirit-selection-title {
+    font-size: 1.5rem;
+  }
+
+  .spirit-card {
+    padding: 1rem;
+  }
+
+  .spirit-icon {
+    font-size: 2.5rem;
+  }
+
+  .spirit-name {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .spirit-grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .spirit-selection-title {
+    font-size: 1.3rem;
+  }
+}

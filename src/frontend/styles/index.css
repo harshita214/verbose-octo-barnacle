@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Spooky Color Palette */
+  --color-deep-purple: #2d1b4e;
+  --color-black: #0a0a0a;
+  --color-neon-green: #00ff41;
+  --color-blood-red: #8b0000;
+  --color-ghostly-white: #f0f0f0;
+  --color-dark-gray: #1a1a1a;
+  
+  /* Fonts */
+  --font-primary: 'Arial', sans-serif;
+  --font-spooky: 'Impact', sans-serif;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: linear-gradient(135deg, var(--color-deep-purple) 0%, var(--color-black) 100%);
+  color: var(--color-ghostly-white);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+}

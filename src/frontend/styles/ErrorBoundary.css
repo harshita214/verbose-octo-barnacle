@@ -1,0 +1,224 @@
+.error-boundary-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 2rem;
+  animation: spectral_glitch 0.6s ease-out;
+}
+
+@keyframes spectral_glitch {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-content {
+  max-width: 600px;
+  width: 100%;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, rgba(255, 0, 65, 0.1) 0%, rgba(200, 0, 100, 0.05) 100%);
+  border: 2px solid rgba(255, 0, 65, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(255, 0, 65, 0.15);
+  text-align: center;
+}
+
+.error-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  animation: bounce_error 0.6s ease-out;
+}
+
+@keyframes bounce_error {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.error-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff4444;
+  text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+  margin: 0 0 1rem 0;
+  letter-spacing: 1px;
+}
+
+.error-message {
+  font-size: 1rem;
+  color: #b0b0b0;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.6;
+}
+
+/* Error Details */
+.error-details {
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.error-stack {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 0, 65, 0.2);
+  border-radius: 6px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.error-summary {
+  color: #ff8888;
+  font-weight: bold;
+  user-select: none;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.error-summary:hover {
+  color: #ffaaaa;
+}
+
+.error-code {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 0, 65, 0.2);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 0.75rem;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #ff8888;
+  line-height: 1.4;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.error-code code {
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Error Actions */
+.error-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0 1rem 0;
+  flex-wrap: wrap;
+}
+
+.retry-button,
+.reload-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.retry-button {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff4444 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+}
+
+.retry-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 68, 68, 0.5);
+}
+
+.retry-button:active {
+  transform: translateY(0);
+}
+
+.reload-button {
+  background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%);
+  color: #000;
+  box-shadow: 0 4px 15px rgba(0, 255, 65, 0.3);
+}
+
+.reload-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 255, 65, 0.5);
+}
+
+.reload-button:active {
+  transform: translateY(0);
+}
+
+/* Error Warning */
+.error-warning {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 152, 0, 0.1);
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  border-radius: 6px;
+  border-left: 4px solid rgba(255, 152, 0, 0.5);
+}
+
+.error-warning p {
+  font-size: 0.9rem;
+  color: #ffb366;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .error-boundary-container {
+    padding: 1rem;
+  }
+
+  .error-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .error-icon {
+    font-size: 3rem;
+  }
+
+  .error-title {
+    font-size: 1.5rem;
+  }
+
+  .error-message {
+    font-size: 0.95rem;
+  }
+
+  .error-actions {
+    flex-direction: column;
+  }
+
+  .retry-button,
+  .reload-button {
+    width: 100%;
+  }
+
+  .error-code {
+    font-size: 0.75rem;
+    max-height: 200px;
+  }
+}
